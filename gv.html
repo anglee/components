@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/lodash/dist/lodash.js"></script>
+  <script src="app_gv.js"></script>
+  <script src="my_components/gv/gv.js"></script>
+  <script src="my_components/gv/node-factory.js"></script>
+  <script src="my_components/gv/nodeSelect-directive.js"></script>
+  <script src="my_components/gv/graph-factory.js"></script>
+  <script src="my_components/gv/graphSelect-directive.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+Hello, {{foo}}!
+
+<node-select value-obj="node"></node-select>
+<div>node = {{node.value}}</div>
+
+<graph-select value-obj="graph"></graph-select>
+<div>graph = {{graph.value.name}}</div>
+
+</body>
+</html>
