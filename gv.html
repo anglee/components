@@ -7,19 +7,47 @@
   <script src="bower_components/lodash/dist/lodash.js"></script>
   <script src="app_gv.js"></script>
   <script src="my_components/gv/gv.js"></script>
+
   <script src="my_components/gv/node-factory.js"></script>
   <script src="my_components/gv/nodeSelect-directive.js"></script>
+
   <script src="my_components/gv/graph-factory.js"></script>
   <script src="my_components/gv/graphSelect-directive.js"></script>
+
+  <script src="my_components/gv/addNewGraph-directive.js"></script>
+  <script src="my_components/gv/filterTypeSelect-directive.js"></script>
+  <script src="my_components/gv/filter-directive.js"></script>
+  <script src="my_components/gv/filter_verts-directive.js"></script>
+  <script src="my_components/gv/filter_bfs-directive.js"></script>
+  <script src="my_components/gv/addNewFilter-directive.js"></script>
+  <script src="my_components/gv/directionSelect-directive.js"></script>
+
 </head>
 <body ng-controller="mainCtrl">
 Hello, {{foo}}!
+<hr>
+<!--<node-select value-obj="node"></node-select>-->
+<!--<div>node = {{node.value}}</div>-->
+<!--<hr>-->
+<!--<graph-select value-obj="graph"></graph-select>-->
+<!--<div>graph = {{graph.value.name}}</div>-->
+<!--<hr>-->
+<!--<direction-select value-obj="direction"></direction-select>-->
+<!--<div>direction = {{direction.value}}</div>-->
+<!--<hr>-->
+<add-new-graph done="addGraph(graph)"></add-new-graph>
+<hr>
+<!--<filter-type-select value-obj="filterType"></filter-type-select>-->
+<!--<div>filter type = {{filterType.value}}</div>-->
+<!--<filter type="{{filterType.value}}"></filter>-->
+<!--<hr>-->
+<add-new-filter done="addFilter(filter)"></add-new-filter>
 
-<node-select value-obj="node"></node-select>
-<div>node = {{node.value}}</div>
-
-<graph-select value-obj="graph"></graph-select>
-<div>graph = {{graph.value.name}}</div>
-
+<script type="text/ng-template" id="filter-verts.html">
+  <filter-verts value-obj="valueObj"></filter-verts>
+</script>
+<script type="text/ng-template" id="filter-bfs.html">
+  <filter-bfs value-obj="valueObj"></filter-bfs>
+</script>
 </body>
 </html>

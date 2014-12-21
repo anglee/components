@@ -3,17 +3,16 @@
 
   var module = angular.module("gv");
 
-  module.directive("nodeSelect", function($q, nodeFactory) {
+  module.directive("directionSelect", function() {
+    var DIRECTIONS = ["IN", "OUT", "INOUT"];
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/nodeSelect.tmpl.html",
+      templateUrl: "my_components/gv/directionSelect.tmpl.html",
       scope: {
         valueObj: "="
       },
       link: function(scope, element, attrs) {
-        scope.getNodes = function() {
-          return nodeFactory.getNodes();
-        };
+        scope.directions = DIRECTIONS;
       }
     };
   });
