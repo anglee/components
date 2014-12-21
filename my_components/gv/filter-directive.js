@@ -16,6 +16,9 @@
         scope.getTypedFilterUrl = function() {
           return "filter-" + scope.type + ".html";
         };
+        scope.getPreview = function() {
+          return "/" + scope.valueObj.value.join(",");
+        };
       }
     };
   });

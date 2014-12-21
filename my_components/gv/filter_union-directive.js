@@ -2,10 +2,10 @@
   "use strict";
 
   var module = angular.module('gv');
-  module.directive('filterBfs', function() {
+  module.directive('filterUnion', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/filter_bfs.tmpl.html",
+      templateUrl: "my_components/gv/filter_union.tmpl.html",
       scope: {
         valueObj: "="
       },
@@ -38,7 +38,6 @@
               .map(function(it) {
                 return it.value;
               })
-              .compact()
               .unique()
               .value();
           return nodes;
@@ -55,12 +54,7 @@
         scope.remove = function(node) {
           var index = scope.nodes.indexOf(node);
           scope.nodes.splice(index, 1);
-        };
-        scope.add = function() {
-          scope.nodes.push({
-            value: null
-          });
-        };
+        }
       }
     };
   });
