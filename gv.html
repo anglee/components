@@ -10,17 +10,23 @@
 
   <script src="my_components/gv/node-factory.js"></script>
   <script src="my_components/gv/nodeSelect-directive.js"></script>
-
   <script src="my_components/gv/graph-factory.js"></script>
   <script src="my_components/gv/graphSelect-directive.js"></script>
+  <script src="my_components/gv/filterTypeSelect-directive.js"></script>
+  <script src="my_components/gv/directionSelect-directive.js"></script>
+  <script src="my_components/gv/comparatorSelect-directive.js"></script>
 
   <script src="my_components/gv/addNewGraph-directive.js"></script>
-  <script src="my_components/gv/filterTypeSelect-directive.js"></script>
+
   <script src="my_components/gv/filter-directive.js"></script>
   <script src="my_components/gv/filter_verts-directive.js"></script>
+  <script src="my_components/gv/filter_strength-directive.js"></script>
+  <script src="my_components/gv/filter_degree-directive.js"></script>
   <script src="my_components/gv/filter_bfs-directive.js"></script>
+  <script src="my_components/gv/filter_union-directive.js"></script>
   <script src="my_components/gv/addNewFilter-directive.js"></script>
-  <script src="my_components/gv/directionSelect-directive.js"></script>
+  <script src="my_components/gv/vertsSelect-directive.js"></script>
+
 
 </head>
 <body ng-controller="mainCtrl">
@@ -41,13 +47,26 @@ Hello, {{foo}}!
 <!--<div>filter type = {{filterType.value}}</div>-->
 <!--<filter type="{{filterType.value}}"></filter>-->
 <!--<hr>-->
-<add-new-filter done="addFilter(filter)"></add-new-filter>
+<!--<add-new-filter done="addFilter(filter)"></add-new-filter>-->
+<!--<hr>-->
+<verts-select value-obj="nodes"></verts-select>
 
 <script type="text/ng-template" id="filter-verts.html">
   <filter-verts value-obj="valueObj"></filter-verts>
 </script>
+<script type="text/ng-template" id="filter-strength.html">
+  <filter-strength value-obj="valueObj"></filter-strength>
+</script>
+<script type="text/ng-template" id="filter-degree.html">
+  <filter-degree value-obj="valueObj"></filter-degree>
+</script>
 <script type="text/ng-template" id="filter-bfs.html">
   <filter-bfs value-obj="valueObj"></filter-bfs>
 </script>
+<script type="text/ng-template" id="filter-union.html">
+  <filter-union value-obj="valueObj"></filter-union>
+</script>
+
+
 </body>
 </html>

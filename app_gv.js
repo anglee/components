@@ -18,7 +18,25 @@
     };
     $scope.addFilter = function(filter) {
       console.log("add filter = ", filter);
-    }
+    };
+
+    var nodes = [
+      {
+        value: "aaa"
+      },
+      {
+        value: "bbb"
+      },
+      {
+        value: "ccc"
+      }
+    ];
+
+    $scope.nodes = {
+      value: nodes
+    };
+
+
   });
 
 })(angular, _);

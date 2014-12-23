@@ -1,0 +1,7 @@
+<div>
+  <div ng-repeat="node in getNodes()">
+    <node-select value-obj="node"></node-select>
+    <button ng-click="remove(node)">Remove</button>
+  </div>
+  <button ng-click="add()">Add</button>
+</div>

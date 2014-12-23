@@ -10,7 +10,11 @@
         valueObj: "="
       },
       link: function(scope, element, attrs) {
-        console.log(scope.valueObj);
+        scope.nodes = [
+          {
+            value: null
+          }
+        ];
       }
     };
   });
