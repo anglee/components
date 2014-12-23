@@ -10,11 +10,19 @@
         valueObj: "="
       },
       link: function(scope, element, attrs) {
-        scope.nodes = [
-          {
-            value: null
-          }
-        ];
+        scope.nodes = {
+          value: [
+            {
+              value: "aaa"
+            },
+            {
+              value: "bbb"
+            },
+            {
+              value: "ccc"
+            }
+          ]
+        };
       }
     };
   });

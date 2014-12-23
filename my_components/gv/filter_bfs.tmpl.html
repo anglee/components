@@ -3,9 +3,5 @@
   <div>Direction</div>
   <direction-select value-obj="direction"></direction-select>
   <div>Nodes</div>
-  <div ng-repeat="node in nodes">
-    <node-select value-obj="node"></node-select>
-    <button ng-click="remove(node)">Remove</button>
-  </div>
-  <button ng-click="add()">Add</button>
+  <verts-select value-obj="nodes"></verts-select>
 </div>
