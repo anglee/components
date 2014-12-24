@@ -1,0 +1,12 @@
+<div>
+  Graphs
+  <ul>
+    <li ng-repeat="graph in graphs">{{ graph.name }}</li>
+  </ul>
+
+  <button ng-hide="isAddingNewGraph" ng-click="addNewFilter()">Add a graph</button>
+  <div ng-show="isAddingNewGraph">
+    <add-new-graph done="add(graph)""></add-new-graph>
+  </div>
+
+</div>

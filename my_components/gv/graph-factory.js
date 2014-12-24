@@ -43,8 +43,12 @@
           name: name,
           generator: generator
         });
+      },
+      getFullGraph: function() {
+        return _.find(specialGraphs, { name: "Full" });
       }
     };
+
 
     window.graphFactory = graphFactory;
 

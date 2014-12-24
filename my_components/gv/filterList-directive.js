@@ -14,11 +14,20 @@
         scope.getFilters = function() {
           return scope.valueObj;
         };
-        scope.add = function(filter) {
+
+        scope.isAddingNewFilter = false;
+
+        scope.addNewFilter = function() {
+          scope.isAddingNewFilter = true;
+        };
+
+        scope.addFilter = function(filter) {
+          scope.isAddingNewFilter = false;
           if (filter) {
             scope.getFilters().push(filter);
           }
         };
+
         scope.remove = function(filter) {
           var filters = scope.getFilters();
           var index = filters.indexOf(filter);

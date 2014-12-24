@@ -3,31 +3,20 @@
 
   var module = angular.module("gv");
 
-  module.factory("utils", function($q, $timeout) {
-
-    var filterToString = function(filter) {
-      if (filter[0] !== "union") {
-        return filter.join(',');
-      } else {
-        var theOtherGraph = filter[1];
-        var theOtherGraphStr = graphToString(theOtherGraph);
-        var length = theOtherGraphStr.match(/\//g).length;
-        return theOtherGraphStr + "/union,0," + length;
-      }
-    };
-
-    var graphToString = function(graph) {
-      var ret = "/";
-      graph.forEach(function(filter) {
-        ret += filterToString(filter);
-      });
-      return ret;
-    };
-
-
+  module.factory("utils", function() {
     var utils = {
-      filterToString: filterToString,
-      graphToString: graphToString
+      generateId: function(length) {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        if (_.isUndefined(length)) {
+          length = 6;
+        }
+        for (var i = 0; i < length; i++) {
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        return text;
+      }
     };
 
     window.utils = utils;

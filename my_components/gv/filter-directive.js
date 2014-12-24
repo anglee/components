@@ -16,13 +16,7 @@
           return "filter-" + scope.type + ".html";
         };
         scope.getPreview = function() {
-          //var ret = scope.valueObj.value.join(",");
-          //if (ret[0] !== "/") {
-          //  ret = "/" + ret;
-          //}
-          //return ret;
           var filter = scope.valueObj.value;
-          console.log("filter = ", filter);
           return filterOps.filterToString(filter);
         };
       }

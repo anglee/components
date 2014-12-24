@@ -1,8 +1,11 @@
 <div>
-<div ng-repeat="filter in getFilters()">
-  <filter-static-display value-obj="filter"></filter-static-display>
-  <button ng-click="remove(filter)">remove</button>
-</div>
-<hr>
-<add-new-filter done="add(filter)""></add-new-filter>
+  <div ng-repeat="filter in getFilters()">
+    <filter-static-display value-obj="filter"></filter-static-display>
+    <button ng-click="remove(filter)">remove filter</button>
+  </div>
+  <div>Filters</div>
+  <button ng-hide="isAddingNewFilter" ng-click="addNewFilter()">Add a filter</button>
+  <div ng-show="isAddingNewFilter">
+    <add-new-filter done="addFilter(filter)""></add-new-filter>
+  </div>
 </div>
