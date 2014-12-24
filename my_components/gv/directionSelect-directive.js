@@ -13,6 +13,9 @@
       },
       link: function(scope, element, attrs) {
         scope.directions = DIRECTIONS;
+        if (!scope.valueObj.value) {
+          scope.valueObj.value = "IN";
+        }
       }
     };
   });

@@ -10,51 +10,23 @@
         valueObj: "="
       },
       link: function(scope, element, attrs) {
-        console.log(scope.valueObj);
-
-        scope.direction = {
-          value: "IN"
+        scope.theOtherGraph = {
+          value: null
         };
-        scope.nodes = [
-          {
-            value: "aaa"
-          },
-          {
-            value: "bbb"
-          },
-          {
-            value: "ccc"
+        scope.$watch("theOtherGraph.value", function(graph) {
+          if (graph) {
+            var g = graph.generator;
+            var ret = "/" + g.map(function(it) { return it.join(","); }).join("/");
+
+            console.log("ret", ret);
+            scope.valueObj.value = [
+              "union",
+              graph.name
+            ];
+          } else {
+            scope.valueObj.value = [];
           }
-        ];
-
-        var update = function() {
-          scope.valueObj.value = [
-            "bfs",
-            scope.direction.value
-          ].concat(scope.getNodes());
-        };
-        scope.getNodes = function() {
-          var nodes = _(scope.nodes)
-              .map(function(it) {
-                return it.value;
-              })
-              .unique()
-              .value();
-          return nodes;
-        };
-
-        update();
-
-        scope.$watchCollection("getNodes()", function(newValue) {
-          update();
         });
-        scope.$watch("direction.value", function() {
-          update();
-        });
-        scope.remove = function(node) {
-          var index = scope.nodes.indexOf(node);
-          scope.nodes.splice(index, 1);
-        }
       }
     };
   });

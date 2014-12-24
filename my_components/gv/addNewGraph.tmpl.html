@@ -4,9 +4,16 @@
   <input type="text" ng-model="graph.name" />
   <div>Starting Graph</div>
   <graph-select value-obj="graph.parent"></graph-select>
-  <button ng-click="addFilter()">
-    + concat a filter
-  </button>
-  <button ng-click="ok()">ok</button>
+  <!--<button ng-click="addFilter()">-->
+    <!--+ concat a filter-->
+  <!--</button>-->
+
+  <filter-list value-obj="graph.filters"></filter-list>
+
+  <div>Preview</div>
+  <!--<div>{{ getPreview() }}</div>-->
+  <pre>{{ graph | json }}</pre>
+
+  <button ng-click="ok()">Add Graph</button>
   <button ng-click="cancel()">cancel</button>
 </div>

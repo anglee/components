@@ -13,6 +13,9 @@
       },
       link: function(scope, element, attrs) {
         scope.comparators = COMPARATORS;
+        if (!scope.valueObj.value) {
+          scope.valueObj.value = "LT";
+        }
       }
     };
   });

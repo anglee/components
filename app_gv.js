@@ -2,7 +2,7 @@
   "use strict";
 
   var module = angular.module("mainApp", ['gv']);
-  module.controller('mainCtrl', function($scope) {
+  module.controller('mainCtrl', function($scope, utils, filterOps) {
     $scope.foo = "AngularJS";
     $scope.node = {
       value: null
@@ -20,6 +20,8 @@
       console.log("add filter = ", filter);
     };
 
+    $scope.filterUnion = [];
+
     var nodes = [
       {
         value: "aaa"
@@ -36,6 +38,11 @@
       value: nodes
     };
 
+    $scope.filters = [
+      ["graph", "graphName"],
+      ["bfs", "INOUT", "nodeA", "nodeB"],
+      ["bfs", "INOUT", "nodeC", "nodeD"]
+    ];
 
   });
 

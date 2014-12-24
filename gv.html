@@ -26,6 +26,10 @@
   <script src="my_components/gv/filter_union-directive.js"></script>
   <script src="my_components/gv/addNewFilter-directive.js"></script>
   <script src="my_components/gv/vertsSelect-directive.js"></script>
+  <script src="my_components/gv/filterList-directive.js"></script>
+  <script src="my_components/gv/filterStaticDisplay-directive.js"></script>
+  <script src="my_components/gv/utils.js"></script>
+  <script src="my_components/gv/filterOps.js"></script>
 
 
 </head>
@@ -42,14 +46,19 @@ Hello, {{foo}}!
 <!--<div>direction = {{direction.value}}</div>-->
 <!--<hr>-->
 <add-new-graph done="addGraph(graph)"></add-new-graph>
-<hr>
+<!--<hr>-->
 <!--<filter-type-select value-obj="filterType"></filter-type-select>-->
 <!--<div>filter type = {{filterType.value}}</div>-->
 <!--<filter type="{{filterType.value}}"></filter>-->
 <!--<hr>-->
-<add-new-filter done="addFilter(filter)"></add-new-filter>
-<hr>
+<!--<add-new-filter done="addFilter(filter)"></add-new-filter>-->
+<!--<hr>-->
 <!--<verts-select value-obj="nodes"></verts-select>-->
+<!--<filter-union value-obj="filterUnion"></filter-union>-->
+<!--<add-new-filter></add-new-filter>-->
+<!--<pre>{{filters | json}}</pre>-->
+<!--<filter-list value-obj="filters"></filter-list>-->
+
 
 <script type="text/ng-template" id="filter-verts.html">
   <filter-verts value-obj="valueObj"></filter-verts>

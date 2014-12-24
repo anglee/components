@@ -2,9 +2,8 @@
   This is a Strength filter
   <div>Direction</div>
   <direction-select value-obj="direction"></direction-select>
-  <div>Nodes</div>
-  <div ng-repeat="node in nodes">
-    <node-select value-obj="node"></node-select>
-    <button ng-click="remove(node)">Remove</button>
-  </div>
+  <div>Comparator</div>
+  <comparator-select value-obj="comparator"></comparator-select>
+  <div>Value</div>
+  <input type="text" ng-model="value" />
 </div>

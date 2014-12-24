@@ -10,51 +10,31 @@
         valueObj: "="
       },
       link: function(scope, element, attrs) {
-        console.log(scope.valueObj);
-
         scope.direction = {
-          value: "IN"
+          value: null
         };
-        scope.nodes = [
-          {
-            value: "aaa"
-          },
-          {
-            value: "bbb"
-          },
-          {
-            value: "ccc"
-          }
-        ];
-
+        scope.comparator = {
+          value: null
+        };
+        scope.value = "1.0";
         var update = function() {
           scope.valueObj.value = [
-            "bfs",
-            scope.direction.value
-          ].concat(scope.getNodes());
+            "degree",
+            scope.direction.value,
+            scope.comparator.value,
+            scope.value
+          ];
         };
-        scope.getNodes = function() {
-          var nodes = _(scope.nodes)
-              .map(function(it) {
-                return it.value;
-              })
-              .unique()
-              .value();
-          return nodes;
-        };
+
+        scope.$watchGroup([
+          "direction.value",
+          "comparator.value",
+          "value"
+        ], function() {
+          update();
+        });
 
         update();
-
-        scope.$watchCollection("getNodes()", function(newValue) {
-          update();
-        });
-        scope.$watch("direction.value", function() {
-          update();
-        });
-        scope.remove = function(node) {
-          var index = scope.nodes.indexOf(node);
-          scope.nodes.splice(index, 1);
-        }
       }
     };
   });

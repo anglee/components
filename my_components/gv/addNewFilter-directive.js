@@ -18,9 +18,8 @@
         scope.filter = {
           value: [123,4]
         };
-        console.log(scope.filter);
         scope.ok = function() {
-          console.log(scope.filter);
+          //console.log(scope.filter);
           scope.done({filter: scope.filter.value});
         };
         scope.cancel = function() {

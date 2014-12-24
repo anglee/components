@@ -16,7 +16,7 @@
       },
       {
         name: "Super",
-        generator: [["graph", "graphName"], ["bfs", "INOUT", "nodeA", "nodeB"]]
+        generator: [["graph", "graphName"], ["bfs", "INOUT", "nodeA", "nodeB"], ["bfs", "INOUT", "nodeC", "nodeD"]]
       }
     ];
 
@@ -24,16 +24,31 @@
       graphs = [
         {
           name: "MyGraphA",
-          generator: [[""]]
+          generator: [["graph", "graphName"], ["verts", "nodeC"], ["union", "Super"]]
+        },
+        {
+          name: "MyGraphB",
+          generator: [["graph", "graphName"], ["verts", "nodeC"], ["union", "MyGraphA"]]
         }
+
       ];
     }, 0);
 
-    return {
+    var graphFactory = {
       getGraphs: function() {
         return [].concat(specialGraphs).concat(graphs);
+      },
+      addGraph: function(name, generator) {
+        graphs.push({
+          name: name,
+          generator: generator
+        });
       }
     };
+
+    window.graphFactory = graphFactory;
+
+    return graphFactory;
   });
 
 })();

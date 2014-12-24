@@ -13,7 +13,8 @@
       link: function(scope, element, attrs) {
         scope.graph = {
           name: "",
-          parent: null
+          parent: null,
+          filters: []
         };
         scope.addFilter = function() {
           console.log("Add filter");
@@ -23,7 +24,10 @@
         };
         scope.cancel = function() {
           scope.done({});
-        }
+        };
+        scope.getPreview = function() {
+          
+        };
       }
     };
   });

@@ -23,6 +23,27 @@
             }
           ]
         };
+
+        var update = function() {
+          scope.valueObj.value = [
+            "verts",
+          ].concat(scope.getNodes());
+        };
+
+        scope.getNodes = function() {
+          var nodes = _(scope.nodes.value)
+              .map(function(it) {
+                return it.value;
+              })
+              .compact()
+              .unique()
+              .value();
+          return nodes;
+        };
+
+        scope.$watchCollection("getNodes()", function(newValue) {
+          update();
+        });
       }
     };
   });
