@@ -15,10 +15,6 @@
         };
         scope.$watch("theOtherGraph.value", function(graph) {
           if (graph) {
-            var g = graph.generator;
-            var ret = "/" + g.map(function(it) { return it.join(","); }).join("/");
-
-            console.log("ret", ret);
             scope.valueObj.value = [
               "union",
               graph.name

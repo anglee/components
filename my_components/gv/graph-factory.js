@@ -5,18 +5,22 @@
 
   module.factory("graphFactory", function($q, $timeout) {
     var graphs = [];
+    var fullGraph = {
+      name: "Full",
+      parent: null,
+      filters: [["graph", "graphName"]]
+    };
+
     var specialGraphs = [
       {
-        name: "Full",
-        generator: [["graph", "graphName"]]
-      },
-      {
         name: "Current",
-        generator: [["graph", "graphName"], ["bfs", "INOUT", "nodeA"]]
+        parent: "Full",
+        filters: [["bfs", "INOUT", "nodeA"]]
       },
       {
         name: "Super",
-        generator: [["graph", "graphName"], ["bfs", "INOUT", "nodeA", "nodeB"], ["bfs", "INOUT", "nodeC", "nodeD"]]
+        parent: "Full",
+        filters: [["bfs", "INOUT", "nodeA", "nodeB"], ["bfs", "INOUT", "nodeC", "nodeD"]]
       }
     ];
 
@@ -24,11 +28,13 @@
       graphs = [
         {
           name: "MyGraphA",
-          generator: [["graph", "graphName"], ["verts", "nodeC"], ["union", "Super"]]
+          parent: "Full",
+          filters: [["verts", "nodeC"], ["union", "Full"]]
         },
         {
           name: "MyGraphB",
-          generator: [["graph", "graphName"], ["verts", "nodeC"], ["union", "MyGraphA"]]
+          parent: "Full",
+          filters: [["verts", "nodeC"], ["union", "MyGraphA"]]
         }
 
       ];
@@ -36,16 +42,22 @@
 
     var graphFactory = {
       getGraphs: function() {
-        return [].concat(specialGraphs).concat(graphs);
+        return [fullGraph].concat(graphs);
       },
-      addGraph: function(name, generator) {
-        graphs.push({
-          name: name,
-          generator: generator
-        });
+      //addGraph: function(name, filters) {
+      //  graphs.push({
+      //    name: name,
+      //    filters: filters
+      //  });
+      //},
+      addGraph: function(graph) {
+        graphs.push(graph);
+      },
+      deleteGraph: function(graph) {
+        graphs.splice(graphs.indexOf(graph), 1);
       },
       getFullGraph: function() {
-        return _.find(specialGraphs, { name: "Full" });
+        return fullGraph;
       }
     };
 

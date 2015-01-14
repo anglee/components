@@ -1,12 +1,28 @@
 <div>
-  Graphs
-  <ul>
-    <li ng-repeat="graph in graphs">{{ graph.name }}</li>
-  </ul>
+  <div>
+    <div>Current</div>
+    <graph-preview graph="currentG"></graph-preview>
+  </div>
+  <hr>
+  <div>
+    <div>Super</div>
+    <graph-select value-obj="superG"></graph-select>
+  </div>
+  <hr>
+  <div>
+    <div>Graphs</div>
 
-  <button ng-hide="isAddingNewGraph" ng-click="addNewFilter()">Add a graph</button>
-  <div ng-show="isAddingNewGraph">
-    <add-new-graph done="add(graph)""></add-new-graph>
+    <div ng-repeat="graph in getGraphs()">
+      <span>Name: {{ graph.name }}</span>
+      <button ng-click="edit(graph)" ng-if="isNotFull(graph)">Edit</button>
+      <button ng-click="delete(graph)" ng-if="isNotFull(graph)">Delete</button>
+      <button ng-click="setAsSuper(graph)">As Super</button>
+      <button ng-click="setAsCurrent(graph)">Show</button>
+    </div>
+    <button ng-hide="isAddingNewGraph" ng-click="addNewFilter()">Add a graph</button>
+    <div ng-show="isAddingNewGraph">
+      <add-new-graph done="add(graph)""></add-new-graph>
+    </div>
   </div>
 
 </div>

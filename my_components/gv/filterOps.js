@@ -34,13 +34,16 @@
     };
 
     var graphToString = function(graph, seenGraphs) {
-      var ret = "";
+      if (!graph) {
+        return "";
+      }
+      var ret = graphToString(getGraph(graph.parent));
       if (_.isEmpty(seenGraphs)) {
         seenGraphs = [graph.name];
       } else {
         seenGraphs = seenGraphs.concat(graph.name);
       }
-      graph.generator.forEach(function(filter) {
+      graph.filters.forEach(function(filter) {
         ret += filterToString(filter, seenGraphs);
       });
       return ret;

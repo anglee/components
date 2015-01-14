@@ -10,7 +10,20 @@
         valueObj: "="
       },
       link: function(scope, element, attrs) {
-        scope.graphs = graphFactory.getGraphs();
+
+        scope.getGraphs = function() {
+          return graphFactory.getGraphs();
+        };
+
+        scope.superG = {
+          value: graphFactory.getFullGraph()
+        };
+
+        scope.currentG = {
+          name: "Current",
+          parent: "Full",
+          filters: [["bfs", "INOUT", "nodeA"]]
+        };
 
         scope.isAddingNewGraph = false;
 
@@ -21,14 +34,26 @@
         scope.add = function(graph) {
           scope.isAddingNewGraph = false;
           if (graph) {
-            console.log("Add Graph", graph);
-            //scope.graphs.add({
-            //  name: graph.name,
-            //  parent: graph.parent,
-            //  generator: graph.filters
-            //});
-            //graphFactory.addGraph(...)
+            graphFactory.addGraph(graph);
           }
+        };
+
+        scope.edit = function(graph) {
+          console.log("Not supported yet");
+        };
+        scope.delete = function(graph) {
+          // TODO, confirm delete first
+          graphFactory.deleteGraph(graph);
+        };
+        scope.setAsSuper = function(graph) {
+          scope.superG.value = graph;
+        };
+        scope.setAsCurrent = function(graph) {
+          scope.currentG = graph;
+        };
+
+        scope.isNotFull = function(graph) {
+          return graph.name !== "Full";
         };
       }
     };
