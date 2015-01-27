@@ -5,7 +5,7 @@
   module.directive('filterUnion', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/filter_union.tmpl.html",
+      templateUrl: "filter_union.tmpl.html",
       scope: {
         valueObj: "="
       },

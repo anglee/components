@@ -5,7 +5,7 @@
   module.directive('graphList', function(graphFactory) {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/graphList.tmpl.html",
+      templateUrl: "graphList.tmpl.html",
       scope: {
         valueObj: "="
       },

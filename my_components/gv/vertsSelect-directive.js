@@ -5,7 +5,7 @@
   module.directive('vertsSelect', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/vertsSelect.tmpl.html",
+      templateUrl: "vertsSelect.tmpl.html",
       scope: {
         valueObj: "="
       },

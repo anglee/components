@@ -5,7 +5,7 @@
   module.directive('filterVerts', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/filter_verts.tmpl.html",
+      templateUrl: "filter_verts.tmpl.html",
       scope: {
         valueObj: "="
       },

@@ -5,7 +5,7 @@
   module.directive('filterStrength', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/filter_strength.tmpl.html",
+      templateUrl: "filter_strength.tmpl.html",
       scope: {
         valueObj: "="
       },

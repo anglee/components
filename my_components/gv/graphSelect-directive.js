@@ -6,7 +6,7 @@
   module.directive("graphSelect", function($q, graphFactory) {
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/graphSelect.tmpl.html",
+      templateUrl: "graphSelect.tmpl.html",
       scope: {
         valueObj: "="
       },

@@ -7,7 +7,7 @@
     var DIRECTIONS = ["IN", "OUT", "INOUT"];
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/directionSelect.tmpl.html",
+      templateUrl: "directionSelect.tmpl.html",
       scope: {
         valueObj: "="
       },

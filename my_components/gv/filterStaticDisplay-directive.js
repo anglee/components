@@ -5,7 +5,7 @@
   module.directive('filterStaticDisplay', function() {
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/filterStaticDisplay.tmpl.html",
+      templateUrl: "filterStaticDisplay.tmpl.html",
       scope: {
         valueObj: "="
       },

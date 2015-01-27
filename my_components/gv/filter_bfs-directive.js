@@ -5,7 +5,7 @@
   module.directive('filterBfs', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/filter_bfs.tmpl.html",
+      templateUrl: "filter_bfs.tmpl.html",
       scope: {
         valueObj: "="
       },

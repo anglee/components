@@ -7,7 +7,7 @@
   module.directive("addNewFilter", function() {
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/addNewFilter.tmpl.html",
+      templateUrl: "addNewFilter.tmpl.html",
       scope: {
         done: "&"
       },

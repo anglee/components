@@ -6,7 +6,7 @@
   module.directive("filter", function($q, nodeFactory, filterOps) {
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/filter.tmpl.html",
+      templateUrl: "filter.tmpl.html",
       scope: {
         type: "@",
         valueObj: "="

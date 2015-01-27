@@ -7,7 +7,7 @@
     var COMPARATORS = ["LT", "LTE", "GT", "GTE"];
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/comparatorSelect.tmpl.html",
+      templateUrl: "comparatorSelect.tmpl.html",
       scope: {
         valueObj: "="
       },

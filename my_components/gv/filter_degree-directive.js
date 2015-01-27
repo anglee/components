@@ -5,7 +5,7 @@
   module.directive('filterDegree', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/filter_degree.tmpl.html",
+      templateUrl: "filter_degree.tmpl.html",
       scope: {
         valueObj: "="
       },

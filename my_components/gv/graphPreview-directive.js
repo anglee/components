@@ -5,7 +5,7 @@
   module.directive('graphPreview', function(filterOps) {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/graphPreview.tmpl.html",
+      templateUrl: "graphPreview.tmpl.html",
       scope: {
         graph: "="
       },

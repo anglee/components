@@ -6,7 +6,7 @@
   module.directive("nodeSelect", function($q, nodeFactory) {
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/nodeSelect.tmpl.html",
+      templateUrl: "nodeSelect.tmpl.html",
       scope: {
         valueObj: "="
       },

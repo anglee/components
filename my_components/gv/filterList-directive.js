@@ -5,7 +5,7 @@
   module.directive('filterList', function() {
     return {
       restrict: 'E',
-      templateUrl: "my_components/gv/filterList.tmpl.html",
+      templateUrl: "filterList.tmpl.html",
       scope: {
         valueObj: "="
       },

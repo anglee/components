@@ -13,7 +13,7 @@
     ];
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/filterTypeSelect.tmpl.html",
+      templateUrl: "filterTypeSelect.tmpl.html",
       scope: {
         valueObj: "="
       },

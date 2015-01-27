@@ -15,7 +15,7 @@
 
     return {
       restrict: "E",
-      templateUrl: "my_components/gv/addNewGraph.tmpl.html",
+      templateUrl: "addNewGraph.tmpl.html",
       scope: {
         startGraph: "=",
         done: "&"
