@@ -1,33 +1,38 @@
 (function() {
   "use strict";
 
-  var _width = 400;
-  var _height = 400;
+  var __width = 400;
+  var __height = 400;
+
 
   var svg = d3.select('body').append('svg')
-      .attr("width", _width)
-      .attr("height", _height)
+      .attr("width", __width)
+      .attr("height", __height)
       .append("g")
-      .attr("transform", "translate(" + _width / 2 + "," + _height / 2 + ")");
+      .attr("transform", "translate(" + __width / 2 + "," + __height / 2 + ")");
 
   var data = {
     transitionStartDegree: 45,
-    transitionEndDegree: 350
+    transitionEndDegree: 360,
+    endAngle: 40
   };
 
-var transitionStartDegree = 45;
-var transitionEndDegree = 350;
 
-var arcFunction = d3.svg.arc()
-    .outerRadius(_width / 4)
-    .innerRadius(_width / 4 * 0.85)
-    .startAngle(0)
-    .endAngle(function(d) {
-      return d * Math.PI / 180;
-    });
+  var _width = 200;
+  var _height = _width;
+  var _fontSize = _width * 0.2;
 
-  var path = svg.selectAll('path').data([data]).enter()
-      .append('path')
+  var arcFunction = d3.svg.arc()
+      .outerRadius(__width / 4)
+      .innerRadius(__width / 4 * 0.85)
+      .startAngle(0)
+      .endAngle(function(d) {
+        return d * Math.PI / 180;
+      });
+
+  var enter = svg.selectAll('path').data([data]).enter()
+
+  var path = enter.append('path')
       .style("fill", function(d, i) {
         return "#dd0000"
       })
@@ -37,10 +42,26 @@ var arcFunction = d3.svg.arc()
       .transition()
       .duration(2000)
       .attrTween("d", function(datum, index, attr) {
+        var interpolateFunc = d3.interpolate(datum.transitionStartDegree, datum.transitionEndDegree);
         return function(t) { // t will grow from 0 to 1 during the transition
-          var interpolateFunc = d3.interpolate(datum.transitionStartDegree, datum.transitionEndDegree);
           var endAngle = interpolateFunc(t);
+          datum.endAngle = endAngle;
           return arcFunction(endAngle);
+        };
+      });
+
+  var text = enter.append('text')
+      .attr("class", "label")
+      .attr("y", _fontSize / 3)
+      .text(data.transitionStartDegree)
+      .style("font-size", _fontSize + "px")
+      .transition()
+      .duration(2000)
+      .tween("text", function(datum) {
+        var interpolateFunc = d3.interpolate(datum.transitionStartDegree, datum.transitionEndDegree);
+        return function(t) { // t will grow from 0 to 1 during the transition
+          var endAngle = interpolateFunc(t);
+          this.textContent = endAngle.toFixed(0);
         };
       });
 
