@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <script src="../../bower_components/react/react.js"></script>
+  <script src="../../bower_components/react/JSXTransformer.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/jsx">
+    /*** @jsx React.DOM */
+    var APP = React.createClass({
+      render: function() {
+        console.log("rendering")
+        return (
+            <div>Hello { this.props.name }</div>
+        );
+      }
+    });
+    React.renderComponent(<APP name="world" />, document.getElementById('container'));
+  </script>
+</body>
+</html>
