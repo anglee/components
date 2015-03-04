@@ -1,6 +1,9 @@
 var App = React.createClass({
+  propType: {
+    txt: React.PropTypes.string
+  },
   render: function() {
-    return (<h1>Hello</h1>)
+    return (<h1>Hello, { this.props.txt }</h1>)
   }
 });
-React.renderComponent(<App />, document.body);
+React.renderComponent(<App txt="World" />, document.body);
