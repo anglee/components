@@ -4,7 +4,10 @@ var App = React.createClass({
     cat: React.PropTypes.number.isRequired
   },
   render: function() {
-    return (<h1>Hello, { this.props.txt }</h1>)
+    return (<div>
+      <h1>Hello, { this.props.txt }</h1>
+      <h1>Hello, { this.props.cat }</h1>
+    </div>)
   }
 });
-React.render(<App txt="World" />, document.body);
+React.render(<App txt="World" cat={5} />, document.body);
