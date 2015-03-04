@@ -1,4 +1,9 @@
 var App = React.createClass({
+  getDefaultProps: function() {
+    return {
+      txt: "Ang"
+    }
+  },
   propType: {
     txt: React.PropTypes.string,
     cat: React.PropTypes.number.isRequired
@@ -10,4 +15,4 @@ var App = React.createClass({
     </div>)
   }
 });
-React.render(<App txt="World" cat={5} />, document.body);
+React.render(<App cat={5} />, document.body);
