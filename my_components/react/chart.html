@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>ReactJS</title>
+  <script src="../../bower_components/react/react.js"></script>
+  <script src="../../bower_components/react/JSXTransformer.js"></script>
+  <script src="../../bower_components/d3/d3.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/jsx">
+  /*** @jsx React.DOM */
+  var Chart = React.createClass({
+    componentDidMount: function() {
+      var element = this.getDOMNode();
+//      console.log(element);
+      //var svg = d3.select(element).append('svg')
+      var svg = d3.select("#chartcontainer").append('svg')
+          .attr("width", this.props.width)
+          .attr("height", this.props.height)
+          .append("g")
+          .attr("transform", "translate(" + this.props.width / 2 + "," + this.props.height / 2 + ")");
+
+      svg.append('circle')
+          .attr("r", this.props.radius - 40)
+          .attr("stroke", "black")
+          .attr("stroke-width", 10)
+          .attr("fill", "none");
+
+      var data = [
+        {
+          population: 1000
+        },
+        {
+          population: 2000
+        }
+      ];
+
+      var color = d3.scale.ordinal()
+          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+      var pie = d3.layout.pie()
+          .sort(null)
+          .value(function(d) { return d.population; });
+
+      var arc = d3.svg.arc()
+          .outerRadius(this.props.radius - 20)
+          .innerRadius(this.props.radius - 60);
+
+      var g = svg.selectAll(".arc")
+        //.data(pie(data))
+          .data([{
+            padAngle: 0,
+            startAngle: 0,
+            endAngle: 0.75 * Math.PI,
+            value: 400
+          }])
+          .enter()
+          .append("g");
+
+      g.append("path")
+          .attr("d", arc)
+          .style("fill", function(d, i) {
+            return color(i)
+          });
+    },
+    render: function() {
+      return (<div id="chartcontainer"></div>)
+    }
+  });
+  var APP = React.createClass({
+    getInitialState: function() {
+      var width = 300;
+      var height = 300;
+      var radius = Math.min(width, height) / 2;
+      return {
+        width: width,
+        height: height,
+        radius: radius
+      };
+    },
+    render: function() {
+      console.log("rendering");
+      return (
+          <Chart width={ this.state.width }
+              height={ this.state.height }
+              radius={ this.state.radius }/>
+      );
+    }
+  });
+  React.renderComponent(<APP name="world" />, document.getElementById('container'));
+</script>
+</body>
+</html>
