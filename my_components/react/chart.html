@@ -15,8 +15,8 @@
     componentDidMount: function() {
       var element = this.getDOMNode();
 //      console.log(element);
-      //var svg = d3.select(element).append('svg')
-      var svg = d3.select("#chartcontainer").append('svg')
+      var svg = d3.select(element).append('svg')
+//      var svg = d3.select("#chartcontainer").append('svg')
           .attr("width", this.props.width)
           .attr("height", this.props.height)
           .append("g")
