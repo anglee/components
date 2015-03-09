@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React - third party</title>
+  <style type="text/css">
+    .bar
+    {
+      display: inline-block;
+      width: 20px;
+      height: 75px; /* Gets overriden by D3-assigned height below */
+      margin-right: 2px;
+      background-color: teal;
+    }
+  </style>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myController">
+  <h1>Chart 1</h1>
+  <reactchart data="data" id="rchart"></reactchart>
+</div>
+<script src="../../../bower_components/react/react.js"></script>
+<script src="../../../bower_components/angular/angular.js"></script>
+<script src="../../../bower_components/d3/d3.js"></script>
+<script>
+  /** @jsx React.DOM */
+  var APP =
+      React.createClass({displayName: 'APP',
+        componentWillReceiveProps:function(nextProps){
+          console.log(nextProps.data);
+          if(nextProps.data){
+            this.renderChart(nextProps.data)
+          }
+        },
+        renderChart:function(dataset){
+          console.log(dataset);
+          d3.select('#' + this.props.target).selectAll('div')
+              .data(dataset)
+              .enter()
+              .append('div')
+              .attr('class', 'bar')
+              .style('height', function (d, i) {
+                console.log(d, i);
+                return d.val * 5 + 'px';
+              });
+        },
+        render:function(){
+          return React.DOM.div( {id:this.props.target})
+        }
+      })
+</script>
+<script>
+  var myApp = angular.module('myApp', [])
+  myApp.controller('myController', function($scope, $timeout) {
+    $timeout(function() {
+      $scope.data = [{
+        val: 2
+      }, {
+        val: 3
+      }, {
+        val: 5
+      }]
+    }, 100);
+  });
+  myApp.directive('reactchart', function() {
+    return {
+      restrict: 'E',
+      scope: {data: '=', id: '@'},
+      link: function(scope, element, attrs) {
+        scope.$watch('data', function(newValue, oldValue) {
+          React.renderComponent(
+              APP({data: scope.data, target: scope.id}),
+              element[0])
+        })
+      }
+    }
+  })
+</script>
+</body>
+</html>
