@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script>
+  $(document).ready(function() {
+    var canvas = document.getElementById("canvas");
+
+    var context = canvas.getContext("2d");
+
+    image = document.createElement("img"),
+        x = 0,
+        y = 0;
+
+    image.src = "http://bit-101.com/horse.jpg";
+    image.addEventListener("load", function() {
+      setInterval(animate, 1000/15);
+    });
+
+
+    function animate() {
+      var w = 186,
+          h = 135;
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(image,
+          w * x, h * y, w, h,
+          0, 0, w, h);
+      x++;
+      if (x > 3) {
+        x = 0;
+        y++;
+      }
+      if (y > 3) {
+        y = 0;
+      }
+    }
+  });
+</script>
+</body>
+</html>

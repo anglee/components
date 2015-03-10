@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script>
+  $(document).ready(function() {
+    var canvas = document.getElementById("canvas");
+
+    var context = canvas.getContext("2d");
+
+    var gradient = context.createLinearGradient(100, 100, 100, 200); // from {x:100, y:100} to {x:100, y:200}
+    gradient.addColorStop(0, "red"); // map "red" to domain at 0, which maps to {x:100, y:100}
+    gradient.addColorStop(0.7, "green");// map "red" to domain at 1, which maps to {x:100, y:200}
+    gradient.addColorStop(1, "blue");// map "red" to domain at 1, which maps to {x:100, y:200}
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, 100, 95);
+    context.fillRect(0, 100, 100, 100);
+    context.fillRect(0, 205, 100, 95);
+
+    var gradient2 = context.createRadialGradient(120, 80, 0, 110, 90, 70);
+    gradient2.addColorStop(0, "white");
+    gradient2.addColorStop(1, "black");
+    context.fillStyle = gradient2;
+    context.beginPath();
+    context.arc(100, 100, 50, 0, Math.PI * 2);
+    context.fill();
+
+  });
+</script>
+</body>
+</html>

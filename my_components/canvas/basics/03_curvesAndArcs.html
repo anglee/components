@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+</head>
+<body>
+<canvas id="canvas" width="600" height="300"></canvas>
+<script>
+  $(document).ready(function() {
+    var canvas = document.getElementById("canvas");
+
+    var context = canvas.getContext("2d");
+
+    context.beginPath();
+    context.arc(100, 100, 40, 0, Math.PI * 0.5);
+    context.stroke();
+
+    context.beginPath();
+    context.arc(200, 100, 40, 0, Math.PI * 1.5);
+    context.stroke();
+
+    context.beginPath();
+    context.arc(300, 100, 40, Math.PI * 1.5, 0); // == context.arc(200, 100, 40, 0, Math.PI * 1.5, true);
+    context.stroke();
+
+
+  });
+</script>
+</body>
+</html>
