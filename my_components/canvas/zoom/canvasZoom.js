@@ -113,8 +113,8 @@
     canvas.addEventListener('DOMMouseScroll',handleScroll,false);
     canvas.addEventListener('mousewheel',handleScroll,false);
   };
-  gkhead.src = '';
-  ball.src   = '';
+  gkhead.src = 'http://phrogz.net/tmp/gkhead.jpg';
+  ball.src   = 'http://phrogz.net/tmp/alphaball.png';
 
   // Adds ctx.getTransform() - returns an SVGMatrix
   // Adds ctx.transformedPoint(x,y) - returns an SVGPoint
