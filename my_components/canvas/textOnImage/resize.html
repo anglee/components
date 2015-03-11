@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+  <style>
+    .container {
+      position: relative;
+    }
+    #canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    #label {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    Click canvas to resize;
+  </div>
+  <div class="container">
+    <canvas id="canvas" width="960" height="360"></canvas>
+    <div id="label">TEXT</div>
+  </div>
+<script>
+  $(document).ready(function() {
+    var canvas = document.getElementById("canvas");
+    var label = $("#label");
+
+    var context = canvas.getContext("2d");
+
+    image = document.createElement("img"),
+        x = 0,
+        y = 0;
+
+    image.src = "apnx.jpg";
+    image.addEventListener("load", function() {
+      render();
+    });
+
+    var w = 960,
+        h = 360;
+
+    var isRenderBig = true;
+    function render() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      if (isRenderBig) {
+        context.drawImage(image,
+            0, 0, w, h,
+            0, 0, w, h);
+        context.beginPath();
+        context.moveTo(0, h / 2);
+        context.lineTo(w, h / 2);
+        context.moveTo(w / 2, 0);
+        context.lineTo(w / 2, h);
+        context.stroke();
+
+        label.css("position", "absolute");
+        label.css("left", w / 2 + "px");
+        label.css("top", h / 2 + "px");
+      } else {
+        context.drawImage(image,
+            0, 0, w, h,
+            0, 0, w/2, h/2);
+        context.beginPath();
+        context.moveTo(0, h / 4);
+        context.lineTo(w / 2, h / 4);
+        context.moveTo(w / 4, 0);
+        context.lineTo(w / 4, h / 2);
+        context.stroke();
+
+        label.css("position", "absolute");
+        label.css("left", w / 4);
+        label.css("top", h / 4);
+      }
+
+    }
+
+    $("#canvas").click(function(e) {
+      isRenderBig = !isRenderBig;
+      render();
+    });
+  });
+</script>
+</body>
+</html>
