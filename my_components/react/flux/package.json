@@ -1,0 +1,14 @@
+{
+  "name": "flux",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.5.2",
+    "react": "^0.13.1",
+    "reactify": "^1.1.0"
+  }
+}
