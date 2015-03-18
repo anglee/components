@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 var Catalog = require('../components/app-catalog.js');
+var Cart = require('../components/app-cart.js');
 var APP =
     React.createClass({
       handleClick: function() {
@@ -8,7 +9,14 @@ var APP =
       },
       render: function() {
 
-        return (<Catalog></Catalog>);
+        return (
+          <div>
+            <h1>Store</h1>
+            <Catalog></Catalog>
+            <h1>Shopping Cart</h1>
+            <Cart></Cart>
+          </div>
+        );
       }
     });
 

@@ -5,7 +5,6 @@ var AddToCart = require('../components/app-addtocart.js');
 
 var Catalog = React.createClass({
   getInitialState: function() {
-    console.log("getInitialState", AppStore.getCatalog());
     return {
       items: AppStore.getCatalog()
     };
