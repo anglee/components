@@ -1,6 +1,5 @@
 .DS_Store
 .idea/
-components/
 bower_components/
 node_modules/
 my_components/d3/ringchart/
