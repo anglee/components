@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
-var Catalog = require('../components/app-catalog.js');
-var Cart = require('../components/app-cart.js');
+var Catalog = require('./app-catalog.js');
+var Cart = require('./app-cart.js');
 var APP =
     React.createClass({
       handleClick: function() {

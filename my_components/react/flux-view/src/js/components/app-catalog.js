@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 var AppStore = require('../stores/app-store.js');
-var AddToCart = require('../components/app-addtocart.js');
+var AddToCart = require('./app-addtocart.js');
 
 var Catalog = React.createClass({
   getInitialState: function() {
