@@ -6,4 +6,5 @@
     $scope.foo = "AngularJS";
   });
 
+
 })(angular, _);
