@@ -14,5 +14,8 @@
     "karma-chrome-launcher": "^0.1.7",
     "karma-mocha": "^0.1.10",
     "mocha": "^2.2.1"
+  },
+  "dependencies": {
+    "q": "^1.2.0"
   }
 }

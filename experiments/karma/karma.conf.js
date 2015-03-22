@@ -15,7 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/q/q.js',
       'hello.js',
+      'async.js',
       '**/*.mspec.js'
     ],
 
