@@ -5,3 +5,4 @@ node_modules/
 my_components/d3/ringchart/
 excludes
 dist/
+npm-debug.log
