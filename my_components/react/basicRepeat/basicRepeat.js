@@ -23,7 +23,7 @@ var App = React.createClass({
     return (<div>
       <button onClick={this._onclick}>Add</button>
       {items}
-    </div>)
+    </div>);
   }
 });
 
