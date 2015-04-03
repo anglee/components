@@ -2,15 +2,15 @@ var App = React.createClass({
   getInitialState: function() {
     return {
       items: [{
-        text: "I am #1"
+        text: "I am checking in #1"
       }, {
-        text: "I am #2"
+        text: "I am checking in #2"
       }]
     };
   },
   _onclick: function() {
     this.state.items.push({
-      text: "I am #" + (this.state.items.length + 1)
+      text: "I am checking in #" + (this.state.items.length + 1)
     });
     this.setState(this.state);
   },
