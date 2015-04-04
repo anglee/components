@@ -1,10 +1,18 @@
 var React = require("react");
 
 var App = React.createClass({
+    getInitialState: function() {
+        var items = [1,2].map((it) => { return {
+            text: `I am checking in #${it}`
+        }});
+        return {
+            items: items
+        };
+    },
     render() {
         return (<div>
             <h1>Hello change </h1>
-            {[1,2,3].map(it => <div>{it}</div>)}
+            { this.state.items.map(it => <div>{it.text}</div>) }
         </div>);
     }
 });
