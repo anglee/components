@@ -2,7 +2,7 @@ var React = require("react");
 
 var App = React.createClass({
     getInitialState: function() {
-        var items = [1,2].map((it) => { return {
+        let items = [1,2].map((it) => { return {
             text: `I am checking in #${it}`
         }});
         return {
