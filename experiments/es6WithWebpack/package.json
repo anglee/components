@@ -1,0 +1,16 @@
+{
+  "name": "es6WithWebpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^5.0.8",
+    "babel-loader": "^5.0.0",
+    "webpack": "^1.7.3"
+  }
+}
