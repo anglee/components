@@ -6,6 +6,7 @@
   "dependencies": {
     "6to5ify": "^3.1.0",
     "browserify": "^8.0.3",
+    "lodash": "^3.6.0",
     "react": "^0.12.2",
     "watchify": "^2.2.1"
   },
