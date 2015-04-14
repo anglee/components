@@ -1,14 +1,36 @@
 var React = require("react");
 var _ = require("lodash");
 
+var ArrayNode = React.createClass({
+  render() {
+    console.log(this.props.model);
 
-var ObjNode = React.createClass({
+    var entries = _.map(this.props.model, function(v, k) {
+      return (<Node model={v}></Node>);
+    });
+
+    var result = [];
+    for (let i = 0; i < entries.length; ++i) {
+      if (i !== 0) {
+        result.push(<span>, </span>);
+      }
+      result.push(entries[i])
+
+    }
+
+    return (<span>[{result}]</span>);
+  }
+});
+
+var Node = React.createClass({
   render() {
 
-    if (_.isObject(this.props.model)) {
-      return (<ObjNode2 model={this.props.model}
-                        level={this.props.level + 1}></ObjNode2>);
-
+    if (_.isArray(this.props.model)) {
+      return (<ArrayNode model={this.props.model}
+                         level={this.props.level + 1}></ArrayNode>);
+    } else if (_.isObject(this.props.model)) {
+      return (<ObjectNode model={this.props.model}
+                          level={this.props.level + 1}></ObjectNode>);
     } else if (_.isString(this.props.model)) {
       return (<span>"{this.props.model}"</span>);
     } else {
@@ -31,11 +53,11 @@ var Indent = React.createClass({
       </span>);
   }
 });
-var ObjNode2 = React.createClass({
+var ObjectNode = React.createClass({
   render() {
     var entries = _.map(this.props.model, function(v, k) {
       return (<div>
-        <Indent count={2}/>"{k}": <ObjNode model={v}></ObjNode>
+        <Indent count={2}/>"{k}": <Node model={v}></Node>
       </div>);
     });
 
@@ -53,7 +75,7 @@ var JSONView = React.createClass({
     var level = 0;
     var entries = _.map(model, function(v, k) {
       return (<div>
-        <Indent/>"{k}": <ObjNode model={v} level={level}></ObjNode>
+        <Indent/>"{k}": <Node model={v} level={level}></Node>
       </div>);
     });
 
@@ -65,5 +87,4 @@ var JSONView = React.createClass({
   }
 });
 
-React.render(<JSONView modelString={'{"ABC": 100, "PQR": "hello", "XYZ": {"foo": 999} }'}/>, document.getElementById('example'));
-//React.render(<ObjNode model={'{"ABC": 100 }'}/>, document.getElementById('example'));
+React.render(<JSONView modelString={'{"ABC": 100, "PQR": "hello", "XYZ_Obj": {"foo": 999, "aaa_Array": ["A", 123, "C"]} }'}/>, document.getElementById('example'));
