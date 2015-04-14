@@ -1,24 +1,43 @@
 var React = require("react");
 var _ = require("lodash");
 
+//var JVHide = React.createClass({
+//
+//});
+
 var ArrayNode = React.createClass({
+  getInitialState: function() {
+    return {
+      expanded: true
+    };
+  },
+  _toggleExpanded: function() {
+    console.log("toggle Ex");
+    this.state.expanded = !this.state.expanded;
+    this.setState(this.state);
+  },
   render() {
     console.log(this.props.model);
 
-    var entries = _.map(this.props.model, function(v, k) {
-      return (<Node model={v}></Node>);
-    });
+    var content;
 
-    var result = [];
-    for (let i = 0; i < entries.length; ++i) {
-      if (i !== 0) {
-        result.push(<span>, </span>);
+    if (this.state.expanded) {
+      var entries = _.map(this.props.model, function(v, k) {
+        return (<Node model={v}></Node>);
+      });
+
+      var result = [];
+      for (let i = 0; i < entries.length; ++i) {
+        if (i !== 0) {
+          result.push(<span>, </span>);
+        }
+        result.push(entries[i])
       }
-      result.push(entries[i])
-
+      content = result;
+    } else {
+      content = (<span>...</span>);
     }
-
-    return (<span>[{result}]</span>);
+    return (<span>[{content}]<button onClick={this._toggleExpanded}>{this.state.expanded ? "hide" : "show"}</button></span>);
   }
 });
 
