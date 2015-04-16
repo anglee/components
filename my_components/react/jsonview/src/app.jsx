@@ -4,6 +4,14 @@ var _ = require("lodash");
 //var JVHide = React.createClass({
 //
 //});
+//
+//var CommaSep = React.createClass({
+//  render() {
+//    var content = [];
+//
+//    return (<span>{content}</span>);
+//  }
+//});
 
 var ArrayNode = React.createClass({
   getInitialState: function() {
@@ -22,18 +30,29 @@ var ArrayNode = React.createClass({
     var content;
 
     if (this.state.expanded) {
-      var entries = _.map(this.props.model, function(v, k) {
-        return (<Node model={v}></Node>);
-      });
-
-      var result = [];
-      for (let i = 0; i < entries.length; ++i) {
-        if (i !== 0) {
-          result.push(<span>, </span>);
+      if (this.props.model.length <= 3) {
+        let entries = _.map(this.props.model, function(v, k) {
+          return (<Node model={v}></Node>);
+        });
+        var result = [];
+        for (let i = 0; i < entries.length; ++i) {
+          if (i !== 0) {
+            result.push(<span>, </span>);
+          }
+          result.push(entries[i])
         }
-        result.push(entries[i])
+        content = result;
+      } else {
+        let model = this.props.model;
+        var entries = _.map(model, function(v, i) {
+          return (<div>
+            <Indent count={3}/><Node model={v}></Node>{i !== model.length - 1 ? "," : ""}
+          </div>);
+        });
+
+        content = (<span>{ entries }<Indent count={2} /></span>);
       }
-      content = result;
+
     } else {
       content = (<span>...</span>);
     }
@@ -74,9 +93,11 @@ var Indent = React.createClass({
 });
 var ObjectNode = React.createClass({
   render() {
-    var entries = _.map(this.props.model, function(v, k) {
+    let model = this.props.model;
+    let lastKey = _.last(_.keys(model));
+    var entries = _.map(model, function(v, k) {
       return (<div>
-        <Indent count={2}/>"{k}": <Node model={v}></Node>
+        <Indent count={2}/>"{k}": <Node model={v}></Node>{k !== lastKey ? "," : ""}
       </div>);
     });
 
@@ -91,13 +112,13 @@ var ObjectNode = React.createClass({
 var JSONView = React.createClass({
   render() {
     var model = JSON.parse(this.props.modelString);
+    let lastKey = _.last(_.keys(model));
     var level = 0;
     var entries = _.map(model, function(v, k) {
       return (<div>
-        <Indent/>"{k}": <Node model={v} level={level}></Node>
+        <Indent/>"{k}": <Node model={v} level={level}></Node>{k !== lastKey ? "," : ""}
       </div>);
     });
-
     return (<div>
       <div>{'{'}</div>
       { entries }
@@ -106,4 +127,4 @@ var JSONView = React.createClass({
   }
 });
 
-React.render(<JSONView modelString={'{"ABC": 100, "PQR": "hello", "XYZ_Obj": {"foo": 999, "aaa_Array": ["A", 123, "C"]} }'}/>, document.getElementById('example'));
+React.render(<JSONView modelString={'{"ABC": 100, "PQR": "hello", "XYZ_Obj": {"foo": 999, "aaa_Array": ["A", 123, "C"], "bbb_Array": ["A", 123, "C", "D"]} }'}/>, document.getElementById('example'));
