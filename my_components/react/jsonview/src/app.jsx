@@ -56,7 +56,7 @@ var ArrayNode = React.createClass({
     } else {
       content = (<span>...</span>);
     }
-    return (<span>[{content}]<button onClick={this._toggleExpanded}>{this.state.expanded ? "hide" : "show"}</button></span>);
+    return (<span><button onClick={this._toggleExpanded}>{this.state.expanded ? "-" : "+"}</button>[{content}]</span>);
   }
 });
 
