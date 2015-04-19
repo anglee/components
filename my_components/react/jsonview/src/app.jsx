@@ -109,9 +109,33 @@ var ObjectNode = React.createClass({
   }
 });
 
+
+
 var JSONView = React.createClass({
+  getInitialState() {
+    var self = this;
+    var state = {
+      "ABC": 100,
+      "PQR": "hello",
+      "XYZ_Obj": {
+        "foo": 999,
+        "aaa_Array": ["A", 123, "C"],
+        "bbb_Array": ["A", 123, "C", "D"]
+      }
+    };
+    setTimeout(function() {
+      state.ABC=500;
+      state.ABC_Obj={
+        "Ang": "Lee"
+      };
+      self.setState(state);
+    }, 1000);
+
+    return state;
+  },
   render() {
-    var model = JSON.parse(this.props.modelString);
+    //var model = JSON.parse(this.props.modelString);
+    var model = this.state;
     let lastKey = _.last(_.keys(model));
     var level = 0;
     var entries = _.map(model, function(v, k) {
@@ -127,4 +151,5 @@ var JSONView = React.createClass({
   }
 });
 
-React.render(<JSONView modelString={'{"ABC": 100, "PQR": "hello", "XYZ_Obj": {"foo": 999, "aaa_Array": ["A", 123, "C"], "bbb_Array": ["A", 123, "C", "D"]} }'}/>, document.getElementById('example'));
+//React.render(<JSONView modelString={'{"ABC": 100, "PQR": "hello", "XYZ_Obj": {"foo": 999, "aaa_Array": ["A", 123, "C"], "bbb_Array": ["A", 123, "C", "D"]} }'}/>, document.getElementById('example'));
+React.render(<JSONView />, document.getElementById('example'));
