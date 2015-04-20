@@ -92,7 +92,33 @@ var Indent = React.createClass({
   }
 });
 var ObjectNode = React.createClass({
+  getInitialState() {
+    console.log("ObjectNode - getInitialState");
+    return null;
+  },
+  componentWillMount() {
+    console.log("ObjectNode - componentWillMount");
+  },
+  componentDidMount() {
+    console.log("ObjectNode - componentDidMount");
+  },
+  componentWillReceiveProps() {
+    console.log("ObjectNode - componentWillReceiveProps");
+  },
+  shouldComponentUpdate() {
+    console.log("ObjectNode - shouldComponentUpdate");
+  },
+  componentWillUpdate() {
+    console.log("ObjectNode - componentWillUpdate");
+  },
+  componentDidUpdate() {
+    console.log("ObjectNode - componentDidUpdate");
+  },
+  componentWillUnmount() {
+    console.log("JSONView - componentWillUnmount");
+  },
   render() {
+    console.log("ObjectNode - render");
     let model = this.props.model;
     let lastKey = _.last(_.keys(model));
     var entries = _.map(model, function(v, k) {
@@ -113,6 +139,7 @@ var ObjectNode = React.createClass({
 
 var JSONView = React.createClass({
   getInitialState() {
+    console.log("JSONView - getInitialState");
     var self = this;
     var state = {
       "ABC": 100,
@@ -132,6 +159,27 @@ var JSONView = React.createClass({
     }, 1000);
 
     return state;
+  },
+  componentWillMount() {
+    console.log("JSONView - componentWillMount");
+  },
+  componentDidMount() {
+    console.log("JSONView - componentDidMount");
+  },
+  componentWillReceiveProps() {
+    console.log("JSONView - componentWillReceiveProps");
+  },
+  shouldComponentUpdate() {
+    console.log("JSONView - shouldComponentUpdate");
+  },
+  componentWillUpdate() {
+    console.log("JSONView - componentWillUpdate");
+  },
+  componentDidUpdate() {
+    console.log("JSONView - componentDidUpdate");
+  },
+  componentWillUnmount() {
+    console.log("JSONView - componentWillUnmount");
   },
   render() {
     //var model = JSON.parse(this.props.modelString);
