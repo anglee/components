@@ -128,7 +128,18 @@ var ObjectNode = React.createClass({
     console.log("JSONView - componentWillUnmount");
   },
   propTypes: {
-    model: React.PropTypes.object
+    //model: React.PropTypes.object
+    model: function(props, propName, componentName) {
+      console.group();
+      console.log("props", props);
+      console.log("propName", propName);
+      console.log("componentName", componentName);
+      console.groupEnd();
+
+      if (!(propName in props)) {
+        throw new Error("hey where's the prop: " + propName);
+      }
+    }
   },
   contextTypes: {
     ccc: React.PropTypes.string
