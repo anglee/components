@@ -130,6 +130,9 @@ var ObjectNode = React.createClass({
   propTypes: {
     model: React.PropTypes.object
   },
+  contextTypes: {
+    ccc: React.PropTypes.string
+  },
   render() {
     console.log("ObjectNode - render");
     let model = this.props.model;
@@ -144,6 +147,7 @@ var ObjectNode = React.createClass({
       <span>{'{'}</span>
       { entries }
       <span><Indent/>{'}'}</span>
+      <span><b>{ this.context.ccc }</b></span>
     </span>);
   }
 });
@@ -209,6 +213,14 @@ var JSONView = React.createClass({
       { entries }
       <div>{'}'}</div>
     </div>);
+  },
+  childContextTypes: {
+    ccc: React.PropTypes.string
+  },
+  getChildContext: function() {
+    return {
+      ccc: "cool child context"
+    };
   }
 });
 
