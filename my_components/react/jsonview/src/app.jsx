@@ -60,10 +60,20 @@ var ArrayNode = React.createClass({
   }
 });
 
-var Node = React.createClass({
-  render() {
+var TheMixin = {
+  mixmix: function(foo) {
+    console.log("Mix Mix Mix " + foo);
+  }
+};
 
+var Node = React.createClass({
+  mixins: [TheMixin],
+  propTypes:{
+    level: React.PropTypes.number.isRequired
+  },
+  render() {
     if (_.isArray(this.props.model)) {
+      this.mixmix("rendering an Array!");
       return (<ArrayNode model={this.props.model}
                          level={this.props.level + 1}></ArrayNode>);
     } else if (_.isObject(this.props.model)) {
@@ -116,6 +126,9 @@ var ObjectNode = React.createClass({
   },
   componentWillUnmount() {
     console.log("JSONView - componentWillUnmount");
+  },
+  propTypes: {
+    model: React.PropTypes.object
   },
   render() {
     console.log("ObjectNode - render");
