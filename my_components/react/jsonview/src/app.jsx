@@ -32,12 +32,12 @@ var ArrayNode = React.createClass({
     if (this.state.expanded) {
       if (this.props.model.length <= 3) {
         let entries = _.map(this.props.model, function(v, k) {
-          return (<Node model={v}></Node>);
+          return (<Node key={k} model={v}></Node>);
         });
         var result = [];
         for (let i = 0; i < entries.length; ++i) {
           if (i !== 0) {
-            result.push(<span>, </span>);
+            result.push(<span key={i + 100}>, </span>);
           }
           result.push(entries[i])
         }
@@ -45,7 +45,7 @@ var ArrayNode = React.createClass({
       } else {
         let model = this.props.model;
         var entries = _.map(model, function(v, i) {
-          return (<div>
+          return (<div key={i}>
             <Indent count={3}/><Node model={v}></Node>{i !== model.length - 1 ? "," : ""}
           </div>);
         });
@@ -69,7 +69,7 @@ var TheMixin = {
 var Node = React.createClass({
   mixins: [TheMixin],
   propTypes:{
-    level: React.PropTypes.number.isRequired
+    level: React.PropTypes.number//.isRequired
   },
   render() {
     if (_.isArray(this.props.model)) {
@@ -92,8 +92,8 @@ var Indent = React.createClass({
     if (this.props.count == null) {
       this.props.count = 1;
     }
-    var spaces = _.range(this.props.count).map(function() {
-      return (<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>);
+    var spaces = _.range(this.props.count).map(function(i) {
+      return (<span key={i}>&nbsp;&nbsp;&nbsp;&nbsp;</span>);
     });
 
     return (<span>
@@ -117,6 +117,7 @@ var ObjectNode = React.createClass({
   },
   shouldComponentUpdate() {
     console.log("ObjectNode - shouldComponentUpdate");
+    return true;
   },
   componentWillUpdate() {
     console.log("ObjectNode - componentWillUpdate");
@@ -149,7 +150,7 @@ var ObjectNode = React.createClass({
     let model = this.props.model;
     let lastKey = _.last(_.keys(model));
     var entries = _.map(model, function(v, k) {
-      return (<div>
+      return (<div key={k}>
         <Indent count={2}/>"{k}": <Node model={v}></Node>{k !== lastKey ? "," : ""}
       </div>);
     });
@@ -199,6 +200,7 @@ var JSONView = React.createClass({
   },
   shouldComponentUpdate() {
     console.log("JSONView - shouldComponentUpdate");
+    return true;
   },
   componentWillUpdate() {
     console.log("JSONView - componentWillUpdate");
@@ -215,7 +217,7 @@ var JSONView = React.createClass({
     let lastKey = _.last(_.keys(model));
     var level = 0;
     var entries = _.map(model, function(v, k) {
-      return (<div>
+      return (<div key={k}>
         <Indent/>"{k}": <Node model={v} level={level}></Node>{k !== lastKey ? "," : ""}
       </div>);
     });
