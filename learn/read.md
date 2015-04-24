@@ -4,3 +4,8 @@
 Watch
 
 * [egghead.io React videos](https://egghead.io/technologies/react?order=desc&page=1)
+
+Explore
+
+* https://www.docker.com/
+* https://kitematic.com/
