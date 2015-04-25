@@ -13,6 +13,21 @@ var _ = require("lodash");
 //  }
 //});
 
+var TextNode = React.createClass({
+  getInitialState() {
+    return {
+      txt: "initial text"
+    }
+  },
+  update() {
+    this.setState({
+      txt: this.refs.theText.getDOMNode().value
+    })
+  },
+  render() {
+    return (<span><input type="text" ref="theText" onChange={this.update} />"{this.props.model}""{this.state.txt}"</span>);
+  }
+});
 var ArrayNode = React.createClass({
   getInitialState: function() {
     return {
@@ -76,11 +91,11 @@ var Node = React.createClass({
       this.mixmix("rendering an Array!");
       return (<ArrayNode model={this.props.model}
                          level={this.props.level + 1}></ArrayNode>);
+    } else if (_.isString(this.props.model)) {
+      return (<TextNode model={this.props.model}></TextNode>);
     } else if (_.isObject(this.props.model)) {
       return (<ObjectNode model={this.props.model}
                           level={this.props.level + 1}></ObjectNode>);
-    } else if (_.isString(this.props.model)) {
-      return (<span>"{this.props.model}"</span>);
     } else {
       return (<span>{this.props.model}</span>);
     }
