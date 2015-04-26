@@ -1,18 +1,16 @@
 {
   "name": "react-playground",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "6to5ify": "^3.1.0",
-    "browserify": "^8.0.3",
-    "react": "^0.12.2",
-    "watchify": "^2.2.1"
-  },
-  "devDependencies": {},
+  "description": "* npm install * npm run watch",
   "scripts": {
-    "watch": "watchify -t 6to5ify ./src/app.jsx -o ./dist/bundle.js -v"
+    "watch": "watchify -t babelify ./src/app.jsx -o ./dist/bundle.js -v"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "react": "https://registry.npmjs.org/react/-/react-0.12.2.tgz",
+    "reflux": "^0.2.7",
+    "watchify": "https://registry.npmjs.org/watchify/-/watchify-2.3.0.tgz"
+  }
 }
