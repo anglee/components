@@ -1,4 +1,4 @@
-var React = require("react");
+var React = require("react/addons");
 var _ = require("lodash");
 
 //var JVHide = React.createClass({
@@ -13,19 +13,42 @@ var _ = require("lodash");
 //  }
 //});
 
+//var TextNode = React.createClass({
+//  getInitialState() {
+//    return {
+//      txt: "initial text"
+//    }
+//  },
+//  update() {
+//    this.setState({
+//      txt: this.refs.theText.getDOMNode().value
+//    })
+//  },
+//  render() {
+//    return (<span>
+//      <input type="text"
+//             ref="theText"
+//             onChange={this.update} />
+//      "{this.props.model}"
+//      "{this.state.txt}"
+//    </span>);
+//  }
+//});
+
 var TextNode = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
   getInitialState() {
     return {
       txt: "initial text"
     }
   },
-  update() {
-    this.setState({
-      txt: this.refs.theText.getDOMNode().value
-    })
-  },
   render() {
-    return (<span><input type="text" ref="theText" onChange={this.update} />"{this.props.model}""{this.state.txt}"</span>);
+    return (<span>
+      <input type="text"
+             valueLink={this.linkState('txt')} />
+      "{this.props.model}"
+      "{this.state.txt}"
+    </span>);
   }
 });
 var ArrayNode = React.createClass({
