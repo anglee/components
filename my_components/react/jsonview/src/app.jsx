@@ -35,6 +35,7 @@ var _ = require("lodash");
 //  }
 //});
 
+
 var TextNode = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState() {
