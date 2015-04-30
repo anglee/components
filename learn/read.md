@@ -4,8 +4,12 @@
 Watch
 
 * [egghead.io React videos](https://egghead.io/technologies/react?order=desc&page=1)
+* [LazyWeb](https://www.youtube.com/watch?v=voo5mxStFKg)
+
 
 Explore
 
 * https://www.docker.com/
 * https://kitematic.com/
+
+
