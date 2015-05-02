@@ -64,7 +64,7 @@ var ArrayNode = React.createClass({
     this.setState(this.state);
   },
   render() {
-    console.log(this.props.model);
+    //console.log(this.props.model);
 
     var content;
 
