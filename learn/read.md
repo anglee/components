@@ -17,4 +17,3 @@ Explore
 * https://www.docker.com/
 * https://kitematic.com/
 
-check
