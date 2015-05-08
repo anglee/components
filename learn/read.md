@@ -7,7 +7,7 @@ Read
 Watch
 
 * [egghead.io React videos](https://egghead.io/technologies/react?order=desc&page=1)
-* [LazyWeb](https://www.youtube.com/watch?v=voo5mxStFKg)
+* [LazyWeb](https://www.youtube.com/playlist?list=PLOU2XLYxmsIIdQz8Hih4AyP_ZCn_mzsN4)
 
 
 
