@@ -10,8 +10,6 @@ Watch
 * [LazyWeb](https://www.youtube.com/playlist?list=PLOU2XLYxmsIIdQz8Hih4AyP_ZCn_mzsN4)
 
 
-
-
 Explore
 
 * https://www.docker.com/
