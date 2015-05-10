@@ -15,3 +15,5 @@ Explore
 * https://www.docker.com/
 * https://kitematic.com/
 
+http://palousemindfulness.com/selfguidedMBSR_week1.html
+
