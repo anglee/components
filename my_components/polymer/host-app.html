@@ -1,0 +1,75 @@
+<link rel="import"
+			href="http://www.polymer-project.org/1.0/samples/components/polymer/polymer.html">
+<!-- import the iron-input custom element -->
+<link rel="import"
+			href="./my-element.html">
+
+<dom-module id="host-app">
+
+	<template>
+		<p>
+			<button on-click="handleClick">Change Owner</button>
+		<p>result1 = <span>{{result1}}</span></p>
+		<p>result2 = <span>{{result2}}</span></p>
+		<p>result3 = <span>{{result3}}</span></p>
+		<p>result4 = <span>{{result4}}</span></p>
+		<my-element
+				id="calc1"
+				owner="{{owner}}"
+				result="{{result1}}"
+				read-only-result="{{result2}}"
+				computed-result="{{result3}}"
+				no-notify-result="{{result4}}"></my-element>
+		</p>
+	</template>
+
+	<script>
+		Polymer({
+			is: "host-app",
+			properties: {
+				owner: {
+					type: String,
+					value: "Anglee"
+				},
+				result1: {
+					type: String,
+					value: "DefaultResult1",
+					observer: "handleResult1Change"
+				},
+				result2: {
+					type: String,
+					value: "DefaultResult2",
+					observer: "handleResult2Change"
+				},
+				result3: {
+					type: String,
+					value: "DefaultResult3",
+					observer: "handleResult3Change"
+				},
+				result4: {
+					type: String,
+					value: "DefaultResult4",
+					observer: "handleResult4Change"
+				}
+			},
+			handleClick: function () {
+				this.owner = this.owner + "A";
+			},
+			handleResult1Change: function (newValue, oldValue) {
+				console.log("result1 changed newValue=", newValue, ", oldValue=", oldValue);
+			},
+			handleResult2Change: function (newValue, oldValue) {
+				console.log("result2 changed newValue=", newValue, ", oldValue=", oldValue);
+			},
+			handleResult3Change: function (newValue, oldValue) {
+				console.log("result3 changed newValue=", newValue, ", oldValue=", oldValue);
+			},
+			handleResult4Change: function (newValue, oldValue) {
+				console.log("result4 changed newValue=", newValue, ", oldValue=", oldValue);
+			}
+		});
+	</script>
+
+</dom-module>
+
+

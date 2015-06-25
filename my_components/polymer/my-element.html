@@ -1,0 +1,73 @@
+<link rel="import"
+			href="http://www.polymer-project.org/1.0/samples/components/polymer/polymer.html">
+<!-- import the iron-input custom element -->
+<link rel="import"
+			href="http://www.polymer-project.org/1.0/samples/components/iron-input/iron-input.html">
+
+<dom-module id="my-element">
+
+	<template>
+		<p>
+			owner = <strong>{{owner}}</strong>.
+		</p>
+		<!-- iron-input exposes a two-way bindable input value -->
+		<input is="iron-input" bind-value="{{owner}}"
+					 placeholder="Your name here...">
+		<p>1. result = <span>{{result}}</span></p>
+		<p>2. readOnlyResult = <span>{{readOnlyResult}}</span></p>
+		<p>3. computedResult = <span>{{computedResult}}</span></p>
+		<p>4. noNotifyResult = <span>{{noNotifyResult}}</span></p>
+	</template>
+
+	<script>
+		Polymer({
+			is: "my-element",
+			properties: {
+				owner: {
+					type: String,
+					value: "Daniel",
+					observer: "handleOwnerChange"
+				},
+				result: {
+					type: String,
+					notify: true
+					//,reflectToAttribute: true
+				},
+				readOnlyResult: {
+					type: String,
+					notify: true,
+					readOnly: true
+					//,reflectToAttribute: true
+				},
+				computedResult: {
+					type: String,
+					computed: 'getResult(owner)',
+					notify: true
+					//,reflectToAttribute: true
+				},
+				noNotifyResult: {
+					type: String
+					//,reflectToAttribute: true
+				}
+			},
+			handleOwnerChange: function (newValue) {
+				this.result = this.getResult(newValue);
+
+				// readOnly props can only be set through _set* functions
+				this._setReadOnlyResult(this.getResult(newValue));
+
+				this.noNotifyResult = this.getResult(newValue);
+			},
+			attributeChanged: function(name, type) {
+				console.log(this.localName + '#' + this.id + ' attribute ' + name +
+						' was changed to ' + this.getAttribute(name));
+			},
+			getResult: function (owner) {
+			  return owner.split('').join(' ');
+			}
+		});
+	</script>
+
+</dom-module>
+
+
