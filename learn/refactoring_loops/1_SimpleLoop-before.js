@@ -6,8 +6,7 @@ const AUTHORS = [
 
 var getTwitterHandles = function (authors, company) {
   const result = [];
-  for (let i in authors) {
-    const a = authors[i];
+  for (let a of authors) {
     if (a.company === company) {
       const handle = a.twitterHandle;
       if (handle != null) {
