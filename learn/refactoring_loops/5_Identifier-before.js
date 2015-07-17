@@ -12,7 +12,7 @@ var check_valid_ids = function(required_schemes) {
 
   var used = [];
   var dups = [];
-  var not_found_required = required_schemes.slice(0);
+  var missing_required = required_schemes.slice(0);
 
   for (var id of ids) {
     if (id.void) {
@@ -23,7 +23,7 @@ var check_valid_ids = function(required_schemes) {
     } else {
       for (var req of required_schemes) {
         if (id.scheme === req) {
-          not_found_required.splice(not_found_required.indexOf(req), 1);
+          missing_required.splice(missing_required.indexOf(req), 1);
         }
       }
     }
@@ -35,9 +35,9 @@ var check_valid_ids = function(required_schemes) {
     errors.push("duplicated schemes: " + dups.join(", "));
   }
 
-  if (not_found_required.length > 0) {
+  if (missing_required.length > 0) {
     var missing_names = "";
-    for (req of not_found_required) {
+    for (req of missing_required) {
       missing_names += (missing_names.size > 0) ? ", " + req : req
     }
     errors.push("missing schemes: " + missing_names);
@@ -46,6 +46,8 @@ var check_valid_ids = function(required_schemes) {
   return errors.length ? errors : "valid";
 };
 
+
+// ----
 console.log(check_valid_ids(["x", "y"]));
 console.log(check_valid_ids(["a", "y"]));
 
