@@ -1,0 +1,28 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/samples/components/polymer/polymer.html">
+<link rel="import" href="./my-calculator.html">
+
+<dom-module id="calculator-app">
+
+	<template>
+		<my-calculator result="{{result1}}"></my-calculator>
+		<my-calculator result="{{result2}}"></my-calculator>
+		<my-calculator operand-a="{{result1}}" operand-b="{{result2}}"></my-calculator>
+	</template>
+
+	<script>
+		Polymer({
+			is: "calculator-app",
+			properties: {
+				result1: {
+					type: Number
+				},
+				result2: {
+					type: Number
+				}
+			}
+		});
+	</script>
+
+</dom-module>
+
+

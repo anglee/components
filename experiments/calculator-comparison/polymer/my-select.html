@@ -1,0 +1,31 @@
+<dom-module id="my-select">
+
+	<template>
+		<select on-change="handleChange">
+			<template is="dom-repeat" items="{{options}}">
+				<option value="{{item.symbol}}">{{item.symbol}}</option>
+			</template>
+		</select>
+	</template>
+	<script src="./bower_components/lodash/lodash.js"></script>
+	<script>
+		Polymer({
+			is: "my-select",
+			properties: {
+				selected: {
+					type: String,
+					notify: true
+				},
+				options: {
+					type: Array
+				}
+			},
+			handleChange: function (ev) {
+				var element = ev.srcElement;
+				var symbol = element.options[element.selectedIndex].value;
+				this.selected = _.findWhere(this.options, {symbol: symbol});
+			}
+		});
+	</script>
+
+</dom-module>

@@ -1,0 +1,65 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/samples/components/polymer/polymer.html">
+<link rel="import" href="http://www.polymer-project.org/1.0/samples/components/iron-input/iron-input.html">
+<link rel="import" href="./my-select.html">
+
+<dom-module id="my-calculator">
+
+	<template>
+		<div>
+			<input is="iron-input" bind-value="{{operandA}}">
+			<my-select options="{{operations}}" selected="{{operator}}"></my-select>
+			<input is="iron-input" bind-value="{{operandB}}">
+		</div>
+		<div><span>{{operator.name}}</span> of <span>{{operandA}}</span> and <span>{{operandB}}</span> is : <span>{{result}}</span></div>
+	</template>
+
+	<script>
+		var OPERATIONS = [
+			{ symbol: "+", name: "Sum", fn: function (a, b) {
+				return a + b;
+			}},
+			{ symbol: "-", name: "Difference", fn: function (a, b) {
+				return a - b;
+			}},
+			{ symbol: "%", name: "Modulo", fn: function (a, b) {
+				return a % b;
+			}},
+			{ symbol: "foo", name: "Foo", fn: function (a, b) {
+				return a + b;
+			}}
+		];
+
+		Polymer({
+			is: "my-calculator",
+			properties: {
+				operandA: {
+					type: String,
+					value: "1"
+				},
+				operandB: {
+					type: String,
+					value: "1"
+				},
+				operator: {
+					type: String,
+					value: OPERATIONS[0]
+				},
+				operations: {
+					type: Array,
+					value: OPERATIONS
+				},
+				result: {
+					type: String,
+					computed: 'getResult(operandA, operandB, operator)',
+					notify: true
+				}
+			},
+			getResult: function (operandA, operandB, operator) {
+			  return operator.fn(parseInt(operandA), parseInt(operandB));
+			}
+		});
+	</script>
+
+</dom-module>
+
+

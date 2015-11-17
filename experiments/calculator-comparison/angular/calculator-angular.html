@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CalcApp">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.js"></script>
+	<script src="calculator-angular.js"></script>
+	<title></title>
+</head>
+<body ng-controller="CalcAppController">
+	<calculator on-result-updated="handleResultUpdateA(result)"></calculator>
+	<calculator on-result-updated="handleResultUpdateB(result)"></calculator>
+	<calculator ext-operand-a="{{resultA}}"
+							ext-operand-b="{{resultB}}"></calculator>
+</body>
+</html>
