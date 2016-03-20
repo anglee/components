@@ -1,0 +1,37 @@
+{
+  "name": "react_redux",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/anglee/calculator-comparison",
+  "scripts": {
+    "webpack": "webpack",
+    "start": "webpack-dev-server --hot --inline",
+    "test": "mocha js/**/*.spec.js --compilers js:babel-register"
+  },
+  "author": "ang.lee@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.1.21",
+    "babel-loader": "^6.1.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.6.5",
+    "chai": "^3.5.0",
+    "copy-webpack-plugin": "^0.2.0",
+    "jsdom": "^8.1.0",
+    "mocha": "^2.4.5",
+    "mocha-jsdom": "^1.1.0",
+    "react-addons-test-utils": "^0.14.7",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.6",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1"
+  }
+}
