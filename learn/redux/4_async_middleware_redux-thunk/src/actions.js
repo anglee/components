@@ -27,7 +27,7 @@ export function decrement(amount) {
 export const ASYNC_INCREMENT_ISSUED = 'ASYNC_INCREMENT_ISSUED';
 function asyncIncrementIssued() {
 	return {
-		type: ASYNC_INCREMENT_ISSUED,
+		type: ASYNC_INCREMENT_ISSUED
 	};
 }
 
@@ -46,7 +46,7 @@ export function asyncIncrement(amount) {
 			dispatch(asyncIncrementExecute(amount));
 		}, 700);
 
-		dispatch(asyncIncrementIssued(amount));
+		dispatch(asyncIncrementIssued());
 	};
 
 }
